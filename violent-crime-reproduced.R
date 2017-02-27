@@ -16,6 +16,13 @@ crimedata <- crimedata[1] %>% as.data.frame
 crimedata <- select(crimedata,NULL..Year, NULL..Violentcrime2)
 crimedata <- rename(crimedata, Year = NULL..Year, Violent_Crimes = NULL..Violentcrime2)
 
+#Shave data burs from Year
+crimedata$Year <- gsub ('20146','2014',crimedata$Year)
+crimedata$Year <- gsub ('20015', '2001', crimedata$Year)
+
+#Format in ascending order
+crimedata <- arrange(crimedata, (Year))
+
 ggplot(crimedata, aes(crimedata$Violent_Crime, crimedata$Year))+
   geom_point () +
   geom_line()
