@@ -37,6 +37,9 @@ crimedata <- rbind.data.frame(crimedata1990, crimedata1996)
 crimedata$Violent_Crime_Rate <- as.numeric(as.character(crimedata$Violent_Crime_Rate))
 crimedata$Year <- as.numeric(as.character(crimedata$Year))
 
+#Save crimedata as crimedata.RData file for loading into index.Rmd.
+save(crimedata, file="crimedata.RData")
+
 #Reproduce essential visualization
 ggplot(crimedata, aes(crimedata$Year, crimedata$Violent_Crime_Rate, group = 1)) +
   geom_point (size = 3) +

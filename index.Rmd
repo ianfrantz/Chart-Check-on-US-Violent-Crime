@@ -3,6 +3,25 @@
 
 ```{r, echo=FALSE}
 library("ggplot2")
+load (file="crimedata.RData")
 ```
 
-##Reproduced Successfully
+#[Reproducted Successfully](http://ianfrantz.com/2017/chart-check-dangerous-permanent-trend/)
+
+```{r echo=FALSE}
+ggplot(crimedata, aes(crimedata$Year, crimedata$Violent_Crime_Rate, group = 1)) +
+  geom_point (size = 3) +
+  geom_line() +
+  scale_x_continuous(breaks=crimedata$Year) +
+  xlab ("Year Reported") +
+  ylab ("Violent Crime Rate per 100,000 Population") +
+  labs (
+    title = "Reported violent crime rate in the United States from 1990 to 2015",
+    subtitle = "Data Sources:
+                https://www2.fbi.gov/ucr/cius2009/data/table_01.html
+                https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-1/ ",
+    caption = "Source code:
+               https://github.com/ianfrantz/Chart-Check-on-US-Violent-Crime
+               Author: www.ianfrantz.com"
+  )
+```
